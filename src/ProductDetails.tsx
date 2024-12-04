@@ -1,8 +1,10 @@
-import { Skeleton } from '@mantine/core';
+import { Skeleton, Button } from '@mantine/core';
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom';
 import { ReviewForm } from './ratingform';
 import { RatingComponent } from './ratingcomponent';
+import { IconTrash } from '@tabler/icons-react';
+import { EditProduct } from './productEdit';
 
 export function ProductDetails () {
   const { id } = useParams<{ id: string }>();
@@ -42,9 +44,9 @@ export function ProductDetails () {
  
     return (
       <>
-      <div id={productquery.data.id} className='flex gap-6 w-fit  rounded-2xl my-10'>
+      <div id={productquery.data.id} className='flex items-stretch gap-6 w-fit  rounded-2xl my-10'>
           <img className='w-[620px] h-[400px] object-cover rounded-xl transition-all duration-700 ease-in-out hover:scale-105' src={productquery.data.imageUrls[0]} alt="" />
-          <div className='h-full justify-between'>
+          <div className=' flex flex-col justify-between'>
               <div>
                 <h2 className='m-0 text-gray-800'>{productquery.data.name}</h2>
                 <p className='m-0 text-gray-800'><span className='font-medium mr-2'>category:</span> {productquery.data.category}</p>
@@ -53,8 +55,9 @@ export function ProductDetails () {
                 <p className='m-0 text-gray-800 my-3'><span className='font-medium mr-2'>Stock:</span> {productquery.data.quantityOnHand}</p>
                 <div className='m-0 flex gap-3'><h4 className='line-through text-red-500 m-0 '>{productquery.data.price}</h4><h4 className='m-0 text-green-500'>{productquery.data.sellingPrice}</h4></div>
               </div>
-              <div>
-                but
+              <div className='flex gap-4'>
+              <EditProduct product={productquery.data} />
+              <Button leftSection={<IconTrash/>} type='submit' variant="outline">Delete</Button>
               </div>
           </div> 
       </div>

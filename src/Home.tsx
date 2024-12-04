@@ -53,7 +53,7 @@ export function Home () {
     return (
       <>
       
-        <form action="">
+        {/* <form action="">
             <div className='flex gap-10 items-end'>
               <Select
                 label="Category"
@@ -78,7 +78,7 @@ export function Home () {
                 </Center>
               
            </div>
-        </form>
+        </form> */}
         <Group mt={10} justify='end'>
           <ProductAdd/>
         </Group>
