@@ -79,7 +79,7 @@ export function Home () {
               
            </div>
         </form> */}
-        <Group mt={10} justify='end'>
+        <Group mt={40} justify='center'>
           <ProductAdd/>
         </Group>
         <SimpleGrid
