@@ -22,7 +22,7 @@ To get started with the project, follow these steps:
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/your-username/product-review-front-end.git
+    git clone https://github.com/hashimaw/product-review-app.git
     cd product-review-front-end
     ```
 
@@ -40,7 +40,7 @@ To get started with the project, follow these steps:
 ## Usage
 
 1. **Open the application**:
-    Open your browser and navigate to `http://localhost:3000` (or the port specified in your Vite config).
+    Open your browser and navigate to `http://localhost:5173` (or the port specified in your Vite config).
 
 2. **Submit a Review**:
     - Fill in the product review form with your name, comment, rating, tags, image URLs, and other details.
