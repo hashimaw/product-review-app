@@ -6,6 +6,7 @@ import { RatingComponent } from './ratingcomponent';
 import { IconTrash } from '@tabler/icons-react';
 import { EditProduct } from './productEdit';
 import { useEffect } from 'react';
+import { DeleteProduct } from './delete';
 
 export function ProductDetails () {
   const { id } = useParams<{ id: string }>();
@@ -58,7 +59,7 @@ export function ProductDetails () {
               </div>
               <div className='flex gap-4'>
               <EditProduct product={productquery.data} />
-              <Button leftSection={<IconTrash/>} type='submit' variant="outline">Delete</Button>
+              <DeleteProduct product={productquery.data}/>
               </div>
           </div> 
       </div>
