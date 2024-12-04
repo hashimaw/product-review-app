@@ -1,9 +1,8 @@
-import { Skeleton, Button } from '@mantine/core';
+import { Skeleton } from '@mantine/core';
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom';
 import { ReviewForm } from './ratingform';
 import { RatingComponent } from './ratingcomponent';
-import { IconTrash } from '@tabler/icons-react';
 import { EditProduct } from './productEdit';
 import { useEffect } from 'react';
 import { DeleteProduct } from './delete';

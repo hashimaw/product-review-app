@@ -1,18 +1,15 @@
-import { SimpleGrid, Skeleton, Pagination, Center, Select, RangeSlider, Button, Group } from '@mantine/core';
+import { SimpleGrid, Skeleton, Pagination, Center, Group } from '@mantine/core';
 import { useQuery } from '@tanstack/react-query'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductAdd } from './productAdd';
+import { FilterProducts } from './filter';
 
 interface Product {id: string; name: string; description: string; price: number; category: string; tags: string[]; use: string; minimumQuantity: number; sellingPrice: number; addedBy: string; expiresAt: string; quantityOnHand: number; reservedQuantity: number; discount: number; imageUrls: string[]; createdAt: string; updatedAt: string}
 
 export function Home () {
 
   const [page, setPage] = useState(1);
-  // const [category, setCategory] = useState<string | null>('');
-  // const [pricemin, setpricemin] = useState<string | null>('');
-  // const [pricemax, setpricemax] = useState<string | null>('');
-  // const [sortby, setSortby] = useState<string | null>('');
 
   useEffect(() => { 
     window.scrollTo(0, 0);
@@ -51,35 +48,8 @@ export function Home () {
  
     return (
       <>
-      
-        {/* <form action="">
-            <div className='flex gap-10 items-end'>
-              <Select
-                label="Category"
-                placeholder='all'
-                value={category}
-                onChange={setCategory}
-                data={['electronics','ring', 'jewlery', 'books']}
-              />
-              <div className='flex w-40 flex-col gap-2.5'>
-                <label>Price Range</label>
-                <RangeSlider minRange={50} min={0} max={300} step={2} defaultValue={[0, 300]} />
-              </div>
-              <Select
-                label="Sort by:"
-                value={sortby}
-                onChange={setSortby}
-                placeholder='popularity'
-                data={['popularity','price']}
-              />
-              <Center>
-                <Button  leftSection={<IconFilter size={18} />} variant="outline">Filter</Button>
-                </Center>
-              
-           </div>
-        </form> */}
         <Group mt={40} justify='center'>
-          <ProductAdd/>
+          <ProductAdd/> <FilterProducts/>
         </Group>
         <SimpleGrid
           cols={{ base: 1, sm: 2, lg: 3 }}

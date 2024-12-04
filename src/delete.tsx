@@ -43,7 +43,7 @@ export function DeleteProduct ({ product }: ProductProps) {
     return (
       <>
   <Button onClick={open} leftSection={<IconTrash/>} variant="outline"> Delete </Button>
-      <Modal opened={opened} onClose={close} title="Add Product Form" centered>
+      <Modal opened={opened} onClose={close} title={`You are about to delete:  '${product.name}' `} centered>
         
         <form onSubmit={form.onSubmit(handleSubmit)}>
           <LoadingOverlay visible={isPending} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }}>
