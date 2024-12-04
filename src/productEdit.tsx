@@ -39,7 +39,8 @@ export function EditProduct ({ product }: ProductProps) {
       use: (value) => (value.length == 0 ? 'Please write the use' : null),
       addedBy: (value) => (value.length == 0 ? 'Please write the product owner name' : null),
       quantityOnHand: (value) => (value <= 0 ? "please enter the available quantity" : null),
-      imageUrls: (value) => { const urlPattern = /^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|((\d{1,3}\.){3}\d{1,3}))(\:\d+)?(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(#[-a-z\d_]*)?$/i; for (let url of value) { if (!urlPattern.test(url)) { return 'Invalid URL'; } } return null; },
+      imageUrls: (value) => { const urlPattern = /^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|((\d{1,3}\.){3}\d{1,3}))(\:\d+)?(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(#[-a-z\d_]*)?$/i; 
+        for (let url of value) { if (!urlPattern.test(url)) { return 'Invalid URL'; } } return null; },
     },
   });
 
@@ -53,7 +54,7 @@ export function EditProduct ({ product }: ProductProps) {
       }).then((res) => { if (!res.ok) { return res.json().then((error) => { throw new Error(error.message || "Something went wrong"); }); } return res.json(); }),
       onError:()=>{open()},
       onSuccess:() => {
-        queryClient.invalidateQueries({queryKey: ["products"]});
+        queryClient.invalidateQueries({queryKey: ["product"]});
         form.reset();
         setTags([]);
         close();
@@ -193,13 +194,15 @@ export function EditProduct ({ product }: ProductProps) {
             { e.preventDefault(); addImageUrl(); } }} 
             error={form.errors.imageUrls}
         /> 
-        <div> {imageUrls.map((url) => ( 
-            <Pill key={url}> {url} 
-            <ActionIcon size="xs" onClick={() => removeImageUrl(url)}> 
-                <IconX size={10} /> 
-            </ActionIcon> 
-            </Pill> ))} 
-        </div>
+        <div> 
+            {imageUrls.map((url) => ( 
+                <Pill key={url} onRemove={() => removeImageUrl(url)}> {url} 
+                <ActionIcon size="xs" ml={2} onClick={() => removeImageUrl(url)}> 
+                    <IconX size={10} /> 
+                </ActionIcon> 
+                </Pill> ))} 
+          </div>
+
           <Center mt={20}> <Button type='submit' variant="filled">Edit Product</Button></Center>
              
         </form>

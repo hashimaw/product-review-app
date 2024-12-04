@@ -1,15 +1,16 @@
 import { Skeleton, Button } from '@mantine/core';
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom';
 import { ReviewForm } from './ratingform';
 import { RatingComponent } from './ratingcomponent';
 import { IconTrash } from '@tabler/icons-react';
 import { EditProduct } from './productEdit';
+import { useEffect } from 'react';
 
 export function ProductDetails () {
   const { id } = useParams<{ id: string }>();
-
-
+  const queryClient = useQueryClient();
+  
   const productquery = useQuery({
     queryKey: ['product'],
     queryFn:()=>
@@ -19,9 +20,9 @@ export function ProductDetails () {
       enabled: true,
   })
 
- 
- 
-  if (productquery.isPending) {
+  useEffect(() => { return () => { queryClient.clear(); }; }, [id, queryClient]);
+
+   if (productquery.isPending) {
     return (
       
       <Skeleton visible={!productquery.isPending}> 

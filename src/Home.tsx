@@ -2,7 +2,6 @@ import { SimpleGrid, Skeleton, Pagination, Center, Select, RangeSlider, Button, 
 import { useQuery } from '@tanstack/react-query'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { IconFilter } from '@tabler/icons-react';
 import { ProductAdd } from './productAdd';
 
 interface Product {id: string; name: string; description: string; price: number; category: string; tags: string[]; use: string; minimumQuantity: number; sellingPrice: number; addedBy: string; expiresAt: string; quantityOnHand: number; reservedQuantity: number; discount: number; imageUrls: string[]; createdAt: string; updatedAt: string}
@@ -10,10 +9,10 @@ interface Product {id: string; name: string; description: string; price: number;
 export function Home () {
 
   const [page, setPage] = useState(1);
-  const [category, setCategory] = useState<string | null>('');
-  const [pricemin, setpricemin] = useState<string | null>('');
-  const [pricemax, setpricemax] = useState<string | null>('');
-  const [sortby, setSortby] = useState<string | null>('');
+  // const [category, setCategory] = useState<string | null>('');
+  // const [pricemin, setpricemin] = useState<string | null>('');
+  // const [pricemax, setpricemax] = useState<string | null>('');
+  // const [sortby, setSortby] = useState<string | null>('');
 
   useEffect(() => { 
     window.scrollTo(0, 0);
